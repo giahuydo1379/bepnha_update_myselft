@@ -3,7 +3,7 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Models\Item::class, function (Faker $faker) {
-    $alerts  =  [[
+    $alerts  =  [
         'name' => $faker->name,
         'cheft' => $faker->name,
         'description' => $faker->text,
@@ -17,9 +17,11 @@ $factory->define(App\Models\Item::class, function (Faker $faker) {
 
         'image_location' =>'videos/'. '2018/'. $faker->randomElement(['1', '12']). '/'. $faker->randomElement(['1', '30']). '/'. $faker->name,
 
-            'type' => $faker->randomElement(['1', '2']),
+        'type' => $faker->randomElement(['1', '2']),
         'disable' => $faker->randomElement(['0', '1']),
         'level' => $faker->randomElement(['1', '5']),
+
+
 
         'is_featured' => $faker->randomElement(['0', '1']),
         'is_new' => $faker->randomElement(['0', '1']),
@@ -29,8 +31,8 @@ $factory->define(App\Models\Item::class, function (Faker $faker) {
         'session_in_day' => $faker->randomElement(['0', '3']),
 
 
-        'pcategory_id' => $faker->randomElement(['1', '10']),
-        'category_id' => $faker->randomElement(['1', '10']),
+        'pcategory_id' => $faker->numberBetween($min=1, $max=20),
+        'category_id' => $faker->numberBetween($min=1, $max=20),
 
 
         'created_by' => 1,
@@ -46,22 +48,18 @@ $factory->define(App\Models\Item::class, function (Faker $faker) {
         'steps' => $faker->text,
 
         'note' => $faker->text,
-    ]];
+    ];
 
-    foreach($alerts  as $key=>$alert){
-        if(  $alerts[$key]['type'] == 2 ){
-            $alerts[$key]['ingredients'] =
-            $alerts[$key]['ingredients_2'] =
-            $alerts[$key]['steps'] =
-            $alerts[$key]['level'] =
-            $alerts[$key]['note'] =
+    foreach($alerts  as $alert){
+        if(  $alerts['type'] == 2){
+            $alerts['ingredients'] =
+            $alerts['ingredients_2'] =
+            $alerts['steps'] =
 
-                null;
+            $alerts['note'] = null;
         }
     }
 
-
-
-    return $alert;
+    return $alerts;
 
 });

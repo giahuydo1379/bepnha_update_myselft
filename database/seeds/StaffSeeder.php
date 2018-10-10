@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TagSeeder extends Seeder
+class StaffSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Tag::class, 20)->create();
+        factory(App\Models\Staff::class, 5)->create();
     }
 }

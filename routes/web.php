@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'api'], function () {
+    Route::group(['prefix' => 'ottbox'], function () {
+        Route::get('/home', 'HomeController@index');
+    });
+});
